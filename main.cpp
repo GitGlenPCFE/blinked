@@ -11,6 +11,8 @@
 #define thermGround P10_0
 #define thermOut P10_1
 
+
+
 /* Reference resistor in series with the thermistor is of 10kohm */
 #define R_REFERENCE                         (float)(10000)
 
