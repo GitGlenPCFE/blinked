@@ -34,7 +34,7 @@ struct things_t {
     float setLightLevel = 22.0f;
     bool lightState;
     bool buttonState;
-    int shieldPercentClosed = 0;
+    int shieldPercentClosed = 50;
 };
 // LCD Clock & Data
 // #define I2C_SCL P6_0
