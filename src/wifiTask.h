@@ -7,7 +7,7 @@ constexpr int TOPIC_LEN = 80;
 void sendPub( int topic, float value);
 constexpr auto LIGHT_LEVEL_TOPIC = 0;
 constexpr auto LIGHT_STATE_TOPIC = 1;
-constexpr auto LIGHT_SWITCH_TOPIC = 2;
+constexpr auto LIGHT_SHIELD_TOPIC = 2;
 constexpr auto REDLED_TOPIC = 3;
 constexpr auto GREENLED_TOPIC = 4;
 constexpr auto BLUELED_TOPIC = 5;

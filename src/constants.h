@@ -7,9 +7,12 @@
 #define thermGround P10_0
 #define thermOut P10_1
 #define GREENLED P0_5
-#define PUSH_BUTTON P10_3 // P0_4 doesn't work when wifi is running
+#define PUSH_BUTTON P10_2 // P0_4 doesn't work when wifi is running
 #define lightOut P10_4
 #define RXLED P12_3
+#define TEMPLOWLED P10_0
+#define TEMPHIGHLED P10_3
+#define LIGHTOKLED P10_5
 
 /* Reference resistor in series with the thermistor is of 10kohm */
 #define R_REFERENCE                         (float)(10000)
@@ -25,12 +28,15 @@
 #define ABSOLUTE_ZERO                    (float)(-273.15)
 struct things_t {
     float tempC;
-    float setTemp = 18.0f;
+    float setTemp = 22.0f;
     bool heaterState;
     float lightL;
-    float setLightLevel = 50.0f;
+    float setLightLevel = 22.0f;
     bool lightState;
     bool buttonState;
+    int shieldPercentClosed = 0;
 };
-
+// LCD Clock & Data
+// #define I2C_SCL P6_0
+// #define I2C_SDA P6_1
 #endif

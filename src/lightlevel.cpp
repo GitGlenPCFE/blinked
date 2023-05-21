@@ -7,6 +7,7 @@
 #include "wifiTask.h"
 
 AnalogIn lightLevelVoltage( lightOut );
+DigitalOut RGBgreen(LIGHTOKLED);
 extern things_t myData;
 
 void readLightLevel() {

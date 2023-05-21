@@ -2,6 +2,9 @@
 #include "constants.h"
 #include "vt100.h"
 #include "display.h"
+#include "LCDi2c.h"
+
+LCDi2c lcd(I2C_SDA, I2C_SCL, LCD16x2, 0x27);
 
 extern things_t myData;
 
@@ -37,6 +40,12 @@ void displayTask() {
       printf("\033[11;40HTemp set to: %3.1fc", myData.setTemp);
 
       ThisThread::sleep_for(500);
+      
+      // LCD temperature prefix, setting & level arrangement
+      lcd.locate(0, 0); // Set cursor to datum on first row
+      lcd.printf("TS=%2.1f%c TL=%2.1f", myData.setTemp, 0xDF, myData.tempC); // Show Temp Set & Lev to 1dp
+      // LCD light prefix, setting & level arrangement
+      lcd.locate(0, 1);  // Set cursor to datum on second row
+      lcd.printf("LS=%3.0f%c  LL=%3.0f", myData.setLightLevel,'%', myData.lightL); // Show Light Set & Lev to 0dp
     }
-
 }
