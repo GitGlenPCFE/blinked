@@ -51,8 +51,8 @@ static uint16_t endQueue = 0;
 static MemoryPool<pubPacket_t, 32> mpool1;
 static Queue<pubPacket_t, 32> pqueue;
 const char topicMap[NUM_TOPICS][TOPIC_LEN] = {
-      "light",   "lightState", "lightShield", "redled", "greenled",
-      "blueled", "announce",   "lightSet",     "latitude",  "longitude",
+      "light", "lightState", "lightShield", "redled", "greenled",
+      "blueled", "announce", "lightSet", "latitude", "longitude",
       "temperature", "tempSet", "rxCount", "txCount", "time", "statusled",
       "orangeled", "heaterState", "heaterSwitch", "humidity"};
 extern things_t myData;
@@ -202,7 +202,7 @@ public:
             ThisThread::sleep_for(10);
             client.yield(10);
             if (qSize > 0) {
-                sprintf(buffer, "%f", myQueue[endQueue].value);
+                sprintf(buffer, "%3.1f", myQueue[endQueue].value);
                 sprintf(topicBuffer, "%s/%s", THING_NAME,
                         topicMap[myQueue[endQueue++].topic]);
                 qSize--;

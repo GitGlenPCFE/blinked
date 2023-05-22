@@ -45,7 +45,7 @@ void displayTask() {
       lcd.locate(0, 0); // Set cursor to datum on first row
       lcd.printf("TS=%2.1f%c TL=%2.1f", myData.setTemp, 0xDF, myData.tempC); // Show Temp Set & Lev to 1dp
       // LCD light prefix, setting & level arrangement
-      lcd.locate(0, 1);  // Set cursor to datum on second row
+      lcd.locate(0, 1); // Set cursor to datum on second row
       lcd.printf("LS=%3.0f%c  LL=%3.0f", myData.setLightLevel,'%', myData.lightL); // Show Light Set & Lev to 0dp
     }
 }

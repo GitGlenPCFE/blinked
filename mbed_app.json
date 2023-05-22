@@ -2,7 +2,7 @@
     "config": {
         "hostname": {
             "help": "The demo will try to connect to this MQTT broker.",
-            "value": "\"192.168.1.176\""
+            "value": "\"test.mosquitto.org\""
         },
         "use-tls-socket": {
             "value": false
@@ -11,8 +11,8 @@
     "target_overrides": {
         "*": {
             "nsapi.default-wifi-security": "WPA_WPA2",
-            "nsapi.default-wifi-ssid": "\"brackenhillc\"",
-            "nsapi.default-wifi-password": "\"1broches\"",
+            "nsapi.default-wifi-ssid": "\"VM980218-2G\"",
+            "nsapi.default-wifi-password": "\"ghchmudh\"",
             "mbed-trace.enable": false,
             "mbed-trace.max-level": "TRACE_LEVEL_DEBUG",
             "rtos.main-thread-stack-size": 8192,
