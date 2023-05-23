@@ -21,19 +21,23 @@ void readLightLevel() {
             RGBgreen = 0; // Light state out of tolerance (above)
             sendPub(LIGHT_STATE_TOPIC, myData.lightState); // Sends lightState change (0.0) to broker
             sendPub(LIGHT_SHIELD_TOPIC, myData.shieldPercentClosed); // Send shield closed %age to broker
+            sendPub(GREENLED_TOPIC, RGBgreen); // Sends light threshold LED state (0.0 or 1.0) to broker
         }
         else if ((myData.lightL < myData.setLightLevel - 5.0f) && (myData.shieldPercentClosed > 0.0)) { // If light level is 5 below setting & shields not fully open, do next 3 lines
             myData.shieldPercentClosed -= 1.0; // Open shields by 1% increment up to site limits (0% min program limit)
             RGBgreen = 0; // Light state out of tolerance (below)
             sendPub(LIGHT_SHIELD_TOPIC, myData.shieldPercentClosed); // Send shield closed %age to broker
+            sendPub(GREENLED_TOPIC, RGBgreen); // Sends light threshold LED state (0.0 or 1.0) to broker
         }
         else if (myData.lightL < myData.setLightLevel - 5.0f) {
             myData.lightState = true; // Ensure/turn the lights on (lumens configured to setLightLevel) as available natural light is too low
             RGBgreen = 0; // Light state out of tolerance (below)
             sendPub(LIGHT_STATE_TOPIC, myData.lightState); // Sends lightState change (1.0) to broker
+            sendPub(GREENLED_TOPIC, RGBgreen); // Sends light threshold LED state (0.0 or 1.0) to broker
         }
         else { // If none of above were actioned, then do next line
             RGBgreen = 1; // Light state within tolerance
+            sendPub(GREENLED_TOPIC, RGBgreen); // Sends light threshold LED state (0.0 or 1.0) to broker
         }
 
         if (pubRate++ > PUB_PERIOD) {

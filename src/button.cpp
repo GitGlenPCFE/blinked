@@ -1,6 +1,7 @@
 #include "mbed.h"
 #include "constants.h"
 #include "button.h"
+#include "wifiTask.h" // Added to incorporate STATUSLED_TOPIC
 
 extern things_t myData;
 DigitalIn userButton(PUSH_BUTTON);
@@ -16,6 +17,7 @@ void readButtonState() {
         else if (userButton == false && pressed == true) {
             myData.buttonState = !myData.buttonState;
             pressed = false;
+            sendPub(STATUSLED_TOPIC, myData.buttonState); // Sends push button state change (0.0 or 1.0) to broker
         }
     }
 }

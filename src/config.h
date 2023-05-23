@@ -5,7 +5,7 @@
  * Set your unique THING_NAME
 */
 
-#define BROKER          "test.mosquitto.org"
+#define BROKER          "192.168.1.176" // Or (test.mosquitto.org), (public.mqtthq.com), (broker.hivemq.com), etc
 #define PORT            1883
 
 #define THING_NAME      "gr_thing"
