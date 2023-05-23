@@ -12,7 +12,6 @@ AnalogIn temperatureVoltage(thermOut);
 DigitalOut RGBred(TEMPHIGHLED);
 DigitalOut RGBblue(TEMPLOWLED);
 extern things_t myData;
-std::string heaterState = myData.heaterState ? "ON" : "OFF";
 
 void readTemp() {
     int pubRate = 0;
@@ -36,14 +35,14 @@ void readTemp() {
     float temperatureC = (float32_t)(((1.0 / stEqn) + ABSOLUTE_ZERO) + 0.05);
     myData.tempC = temperatureC;
     if (myData.tempC > myData.setTemp + 1.0f) {
-        myData.heaterState = false; // Turn the heater off
+        myData.heaterState = false; // Ensure/turn the heater off
         RGBred = 1; RGBblue = 0; // RGB LED: Red on, blue off (to show temp is too high/hot)
-        sendPub(HEATER_STATE_TOPIC, myData.heaterState); // Sends heaterState change to broker
+        sendPub(HEATER_STATE_TOPIC, myData.heaterState); // Sends heaterState change (0.0) to broker
     }
     else if (myData.tempC < myData.setTemp - 1.0f) {
-        myData.heaterState = true; // Turn the heater on
+        myData.heaterState = true; // Ensure/turn the heater on
         RGBred = 0; RGBblue = 1; // RGB LED: Red off, blue on (to show temp is too low/cold)
-        sendPub(HEATER_STATE_TOPIC, myData.heaterState); // Sends heaterState change to broker
+        sendPub(HEATER_STATE_TOPIC, myData.heaterState); // Sends heaterState change (1.0) to broker
     }
     else { // If none of above were actioned, then do next line
         RGBred = 0; RGBblue = 0; // RGB LED: Red off, blue off (to show temp is within tolerance)

@@ -1,5 +1,3 @@
-#include <string>
-
 #ifndef CONSTANTS
 #define CONSTANTS
 // Blinking rate in milliseconds
@@ -31,16 +29,14 @@
 struct things_t {
     float tempC;
     float setTemp = 22.0f;
-    bool heaterState = false;
+    bool heaterState;
     float lightL;
     float setLightLevel = 22.0f;
-    bool lightState = false;
+    bool lightState;
     bool buttonState;
     int shieldPercentClosed = 50;
 };
-
 // LCD Clock & Data
 // #define I2C_SCL P6_0
 // #define I2C_SDA P6_1
-
 #endif
